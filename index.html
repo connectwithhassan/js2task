@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Dinosaur Game</title>
+    <link rel="shortcut icon" href="assets/dinosaur.jpg" type="image/x-icon">
+</head>
+
+<style>
+    #obstacale {
+        animation: move 4s linear infinite;
+    }
+
+    #dino {
+        top: 200px;
+    }
+
+    #dino.active {
+        animation: jump 0.3s linear forwards;
+    }
+
+    @keyframes jump {
+        0% {
+            top: 80px;
+        }
+        100% {
+            top: 200px;
+        }
+    }
+
+    @keyframes move {
+        0% {
+            left: 100%;
+        }
+        100% {
+            left: -100%;
+        }
+    }
+</style>
+
+<body class="flex flex-col justify-center">
+    <!-- Start Game Screen -->
+    <center id="startgame">
+        <div class="bg-gray-400 p-5 mt-48 w-1/2 font-mono rounded-md">
+            <p class="text-3xl my-9">Welcome to Dino Game</p>
+            <p class="text-xl my-3">Enter Your Name</p>
+            <input type="text" class="text-center rounded-md" placeholder="Your name here" id="name">
+            <div class="mt-4">
+                <button id="startbtn" class="bg-gray-700 p-2 rounded-lg text-white">Start Game</button>
+            </div>
+        </div>
+    </center>
+
+    <!-- Game Screen -->
+    <center id="game" class="hidden">
+        <div class="bg-gray-400 w-4/5 h-4/5 mt-28 overflow-hidden">
+            <div class="text-end text-xl" id="scoring">0</div>
+            <div class="place-items-start">
+                <img id="dino" class="w-36 relative py-2" src="assests/dinosaur.jpg" alt="">
+            </div>
+            <div class="flex justify-between">
+                <img id="obstacale" class="size-12 relative mt-36" src="assests/obstacle.jpg" alt="">
+            </div>
+        </div>
+    </center>
+
+    <!-- Game Over Screen -->
+    <center>
+        <div id="Gameover" class="bg-gray-400 w-2/4 h-4/5 hidden overflow-hidden mt-20 p-10">
+            <p class="text-3xl font-mono font-extrabold">Game Over</p>
+            <p id="finalscore"></p>
+            <button id="playbutton" class="mt-10 font-mono bg-gray-500 rounded-lg p-2" onclick="location.reload()">Play Again</button>
+        </div>
+    </center>
+    <script src="index.js"></script>
+</body>
+</html>
